@@ -1,2 +1,2 @@
-﻿using var game = new LittleWitch_Project.Game1();
+﻿using var game = new LittleWitch_Project.Sources.GameLittleWitch();
 game.Run();

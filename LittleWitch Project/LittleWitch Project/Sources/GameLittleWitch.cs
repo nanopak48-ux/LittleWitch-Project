@@ -1,15 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LittleWitch_Project.Sources._01_State;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace LittleWitch_Project
+namespace LittleWitch_Project.Sources
 {
-    public class Game1 : Game
+    public class GameLittleWitch : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private GameStateManager State;
+        private GameFlowManager GameFlow;
 
-        public Game1()
+        public GameLittleWitch()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -18,7 +21,12 @@ namespace LittleWitch_Project
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Window.Title = "Little Witch";
+
+            _graphics.PreferredBackBufferHeight = GameConfig.screenHeight;
+            _graphics.PreferredBackBufferWidth = GameConfig.screemWidth;
+
+            _graphics.ApplyChanges();
 
             base.Initialize();
         }
@@ -26,8 +34,10 @@ namespace LittleWitch_Project
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            State = new GameStateManager();
+            GameFlow = new GameFlowManager(State,_spriteBatch,Content,_graphics,Window);
 
-            // TODO: use this.Content to load your game content here
+            GameFlow.ChangeFlow(_01_State.GameFlow.Home);
         }
 
         protected override void Update(GameTime gameTime)
@@ -35,18 +45,23 @@ namespace LittleWitch_Project
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            State.Update(gameTime);
+
+            State.InputHandler(gameTime);
+
+            State.AudioHandler(gameTime);
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
+            State.Draw(gameTime);
 
             base.Draw(gameTime);
         }
+
     }
 }
