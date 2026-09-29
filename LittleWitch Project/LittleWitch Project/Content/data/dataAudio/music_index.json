@@ -1,0 +1,11 @@
+{
+  "path": "music/",
+  "audio": [
+    {
+      "group": "STATEplay",
+      "name": "bgmTutorial",
+      "volume": 1,
+      "looping": true
+    }
+  ]
+}

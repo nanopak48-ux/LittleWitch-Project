@@ -1,0 +1,36 @@
+{
+  "Width": 100,
+  "Height":  150,
+  "animations": [
+    {
+      "name": "Idle",
+      "loop": true,
+      "frameDuration": 0.1,
+      "frames": [ 0 ]
+    },
+    {
+      "name": "WalkLeft",
+      "loop": true,
+      "frameDuration": 0.1,
+      "frames": [ 0 ]
+    },
+    {
+      "name": "WalkRight",
+      "loop": true,
+      "frameDuration": 0.1,
+      "frames": [ 0 ]
+    },
+    {
+      "name": "Jump",
+      "loop": true,
+      "frameDuration": 0.1,
+      "frames": [ 0 ]
+    },
+    {
+      "name": "Fall",
+      "loop": true,
+      "frameDuration": 0.1,
+      "frames": [ 0 ]
+    }
+  ]
+}

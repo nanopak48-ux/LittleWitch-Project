@@ -47,7 +47,8 @@ namespace LittleWitch_Project.Sources
 
             State.Update(gameTime);
 
-            State.InputHandler(gameTime);
+            KeyboardState keyboardState = Keyboard.GetState();
+            State.InputHandler(keyboardState);
 
             State.AudioHandler(gameTime);
 

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace LittleWitch_Project.Sources._01_State
     {
         void Update(GameTime gameTime);
         void Draw(GameTime gameTime);
-        void InputHandler(GameTime gameTime);
+        void InputHandler(KeyboardState keyboardState);
         void AudioHandler(GameTime gameTime);
     }
     public class GameStateManager : IGameState
@@ -51,9 +52,9 @@ namespace LittleWitch_Project.Sources._01_State
             CurrentState?.Draw(gameTime);
         }
 
-        public void InputHandler(GameTime gameTime)
+        public void InputHandler(KeyboardState keyboardState)
         {
-            CurrentState?.InputHandler(gameTime);
+            CurrentState?.InputHandler(keyboardState);
         }
 
         public void AudioHandler(GameTime gameTime)

@@ -1,0 +1,17 @@
+{
+  "path":  "sfx/",
+  "audio": [
+    {
+      "group": "foley",
+      "name": "hover",
+      "volume": 1,
+      "looping": false
+    },
+    {
+      "group": "foley",
+      "name": "miss",
+      "volume": 1,
+      "looping": false
+    }
+  ]
+}

@@ -1,20 +1,24 @@
-﻿using Microsoft.Xna.Framework;
+﻿using LittleWitch_Project.Sources._03_System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Diagnostics;
 
 namespace LittleWitch_Project.Sources._01_State
 {
     public class StateHome : IGameState
     {
+        private GameFlowManager _gameFlow;
         private ContentManager _content;
         private SpriteBatch _spriteBatch;
+        private GameAudioManager _audio;
 
         Texture2D logo;
         private float Opacity = 0f;
@@ -25,19 +29,27 @@ namespace LittleWitch_Project.Sources._01_State
         private Stopwatch _stopwatch = new Stopwatch();
         public StateHome
             (
+            GameFlowManager gameFlow,
             ContentManager content,
-            SpriteBatch spritebatch
+            SpriteBatch spritebatch,
+            GameAudioManager audio
             )
         {
+            _gameFlow = gameFlow;
             _content = content;
             _spriteBatch = spritebatch;
+            _audio = audio;
 
             LoadContent();
         }
 
+        Texture2D bg;
+
         private void LoadContent()
         {
-            logo = _content.Load<Texture2D>("texture/STATEhome/logo");
+            string path = "texture/STATEhome/";
+            logo = _content.Load<Texture2D>(path + "logo");
+            bg = _content.Load<Texture2D>(path + "home_background");
         }
 
         public void Update(GameTime gameTime)
@@ -45,16 +57,25 @@ namespace LittleWitch_Project.Sources._01_State
             if (!IsIntroDisplayed) IntroLogo();
         }
 
-        public void InputHandler(GameTime gameTime)
+        public void InputHandler(KeyboardState keyboardState)
         {
-            Console.WriteLine();
+            if (keyboardState.IsKeyDown(Keys.Enter))
+            {
+                _gameFlow.ChangeFlow(GameFlow.Tutorial);
+            }            
         }
 
         public void Draw(GameTime gameTime)
         {
             _spriteBatch.Begin();
 
+            
             if (!IsIntroDisplayed) _spriteBatch.Draw(logo, new Vector2(0,0), Color.White * Opacity);
+
+            if (IsIntroDisplayed)
+            {
+                _spriteBatch.Draw(bg, new Vector2(0, 0), Color.White);
+            }
 
             _spriteBatch.End();
         }

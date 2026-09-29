@@ -14,6 +14,52 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin data/dataAudio/music_index.json
+/copy:data/dataAudio/music_index.json;data/dataAudio/music_index
+
+#begin data/dataAudio/sfx_index.json
+/copy:data/dataAudio/sfx_index.json;data/dataAudio/sfx_index
+
+#begin data/dataAudio/voiceMC_index.json
+/copy:data/dataAudio/voiceMC_index.json;data/dataAudio/voiceMC_index
+
+#begin data/dataPlayer/player_animation.json
+/copy:data/dataPlayer/player_animation.json;data/dataPlayer/player_animation
+
+#begin music/STATEplay/bgmTutorial.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.1
+/build:music/STATEplay/bgmTutorial.mp3;music/STATEplay/bgmTutorial
+
+#begin sfx/foley/hover.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.1
+/build:sfx/foley/hover.mp3;sfx/foley/hover
+
+#begin sfx/foley/miss.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.1
+/build:sfx/foley/miss.mp3;sfx/foley/miss
+
+#begin texture/STATEhome/home_background.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:texture/STATEhome/home_background.png;texture/STATEhome/home_background
+
 #begin texture/STATEhome/logo.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -26,4 +72,17 @@
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.1
 /build:texture/STATEhome/logo.jpg;texture/STATEhome/logo
+
+#begin texture/STATEplay/sprite_player.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:texture/STATEplay/sprite_player.png;texture/STATEplay/sprite_player
 

@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LittleWitch_Project.Sources._03_System;
 
 namespace LittleWitch_Project.Sources._01_State
 {
     public enum GameFlow
     {
-        Home
+        Home,
+        Tutorial
     }
     public class GameFlowManager
     {
@@ -20,22 +22,25 @@ namespace LittleWitch_Project.Sources._01_State
         private ContentManager _content;
         private GraphicsDeviceManager _graphics;
         private GameWindow _window;
+        private GameAudioManager _audio;
+        private GamePlay currentgameplay;
         public GameFlow CurrentFlow { get; private set; }
 
         public GameFlowManager(
-            GameStateManager _stateManager,
-            SpriteBatch _spritebatch,
-            ContentManager _content,
-            GraphicsDeviceManager _graphics,
-            GameWindow _window
+            GameStateManager stateManager,
+            SpriteBatch spritebatch,
+            ContentManager content,
+            GraphicsDeviceManager graphics,
+            GameWindow window
             )
         {
-            _gameState = _stateManager;
-            _spriteBatch = _spritebatch;
-            this._content = _content;
-            this._graphics = _graphics;
-            this._window = _window;
+            _gameState = stateManager;
+            _spriteBatch = spritebatch;
+            _content = content;
+            _graphics = graphics;
+            _window = window;
 
+            _audio = new GameAudioManager(_content);
             CurrentFlow = GameFlow.Home;
         }
 
@@ -53,11 +58,18 @@ namespace LittleWitch_Project.Sources._01_State
                 case GameFlow.Home:
                     StartHomeState();
                     break;
+                case GameFlow.Tutorial:
+                    StartPlayState(GamePlay.tutorial);
+                    break;
             }
         }
         private void StartHomeState()
         {
-            _gameState.StateSetTo(new StateHome(_content,_spriteBatch));
+            _gameState.StateSetTo(new StateHome(this,_content,_spriteBatch, _audio));
+        }
+        private void StartPlayState(GamePlay Level)
+        {
+            _gameState.StateSetTo(new StatePlay(this,Level,_content, _spriteBatch, _audio));
         }
     }
 }
