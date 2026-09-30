@@ -19,6 +19,8 @@ namespace LittleWitch_Project.Sources._01_State
         private ContentManager _content;
         private SpriteBatch _spriteBatch;
         private GameAudioManager _audio;
+        private GameAdminDebug _adminDebug;
+        private GameFont _font;
 
         Texture2D logo;
         private float Opacity = 0f;
@@ -32,13 +34,17 @@ namespace LittleWitch_Project.Sources._01_State
             GameFlowManager gameFlow,
             ContentManager content,
             SpriteBatch spritebatch,
-            GameAudioManager audio
+            GameAudioManager audio,
+            GameAdminDebug adminDebug,
+            GameFont font
             )
         {
             _gameFlow = gameFlow;
             _content = content;
             _spriteBatch = spritebatch;
             _audio = audio;
+            _adminDebug = adminDebug;
+            _font = font;
 
             LoadContent();
         }
@@ -61,7 +67,7 @@ namespace LittleWitch_Project.Sources._01_State
         {
             if (keyboardState.IsKeyDown(Keys.Enter))
             {
-                _gameFlow.ChangeFlow(GameFlow.Tutorial);
+                _gameFlow.ChangeFlow(GameState.Tutorial);
             }            
         }
 

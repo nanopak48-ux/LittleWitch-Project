@@ -1,15 +1,35 @@
 {
-    "activeFile": "",
+    "activeFile": "level_tutorial.tmx",
     "expandedProjectPaths": [
+        "."
     ],
     "fileStates": {
+        "level_tutorial.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 840,
+                "y": 1228
+            }
+        },
+        "level_tutorial.tmx#TESTICON": {
+            "scaleInDock": 0.0625
+        }
     },
+    "last.imagePath": "C:/Users/User/source/repos/LittleWitch Project/LittleWitch Project/LittleWitch Project/Content/level/source",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 64,
     "map.tileWidth": 64,
     "openFiles": [
+        "level_tutorial.tmx"
     ],
     "project": "level_tutorial.tiled-project",
     "recentFiles": [
-    ]
+        "level_tutorial.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    }
 }

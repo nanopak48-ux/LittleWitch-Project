@@ -1,4 +1,5 @@
 ﻿using LittleWitch_Project.Sources._01_State;
+using LittleWitch_Project.Sources._03_System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,6 +12,7 @@ namespace LittleWitch_Project.Sources
         private SpriteBatch _spriteBatch;
         private GameStateManager State;
         private GameFlowManager GameFlow;
+        private GameAdminDebug _adminDebug;
 
         public GameLittleWitch()
         {
@@ -24,7 +26,7 @@ namespace LittleWitch_Project.Sources
             Window.Title = "Little Witch";
 
             _graphics.PreferredBackBufferHeight = GameConfig.screenHeight;
-            _graphics.PreferredBackBufferWidth = GameConfig.screemWidth;
+            _graphics.PreferredBackBufferWidth = GameConfig.screenWidth;
 
             _graphics.ApplyChanges();
 
@@ -35,9 +37,10 @@ namespace LittleWitch_Project.Sources
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             State = new GameStateManager();
-            GameFlow = new GameFlowManager(State,_spriteBatch,Content,_graphics,Window);
+            _adminDebug = new GameAdminDebug();
+            GameFlow = new GameFlowManager(State,_spriteBatch,Content,_graphics,Window, _adminDebug);
 
-            GameFlow.ChangeFlow(_01_State.GameFlow.Home);
+            GameFlow.ChangeFlow(_01_State.GameState.Home);
         }
 
         protected override void Update(GameTime gameTime)
@@ -49,6 +52,8 @@ namespace LittleWitch_Project.Sources
 
             KeyboardState keyboardState = Keyboard.GetState();
             State.InputHandler(keyboardState);
+
+            _adminDebug.Update(keyboardState);
 
             State.AudioHandler(gameTime);
 

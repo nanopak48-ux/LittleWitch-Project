@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LittleWitch_Project.Sources._03_System;
+using LittleWitch_Project.Sources._02_Entity;
 
 namespace LittleWitch_Project.Sources._01_State
 {
-    public enum GameFlow
+    public enum GameState
     {
         Home,
         Tutorial
@@ -23,15 +24,18 @@ namespace LittleWitch_Project.Sources._01_State
         private GraphicsDeviceManager _graphics;
         private GameWindow _window;
         private GameAudioManager _audio;
-        private GamePlay currentgameplay;
-        public GameFlow CurrentFlow { get; private set; }
+        private GameAdminDebug _adminDebug;
+        private GameFont _font;
+        private GamePlayLevel currentgameplay;
+        public GameState CurrentState { get; private set; }
 
         public GameFlowManager(
             GameStateManager stateManager,
             SpriteBatch spritebatch,
             ContentManager content,
             GraphicsDeviceManager graphics,
-            GameWindow window
+            GameWindow window,
+            GameAdminDebug adminDebug
             )
         {
             _gameState = stateManager;
@@ -39,37 +43,40 @@ namespace LittleWitch_Project.Sources._01_State
             _content = content;
             _graphics = graphics;
             _window = window;
+            _adminDebug = adminDebug;
 
+            _font = new GameFont(_content);
             _audio = new GameAudioManager(_content);
-            CurrentFlow = GameFlow.Home;
+            CurrentState = GameState.Home;
         }
 
         public void SkipState()
         {
-            ChangeFlow((CurrentFlow + 1));
+            ChangeFlow((CurrentState + 1));
         }
 
-        public void ChangeFlow(GameFlow nextFlow)
+        public void ChangeFlow(GameState nextFlow)
         {
-            CurrentFlow = nextFlow;
+            CurrentState = nextFlow;
 
             switch (nextFlow)
             {
-                case GameFlow.Home:
+                case GameState.Home:
                     StartHomeState();
                     break;
-                case GameFlow.Tutorial:
-                    StartPlayState(GamePlay.tutorial);
+                case GameState.Tutorial:
+                   
+                    StartPlayState(GamePlayLevel.tutorial);
                     break;
             }
         }
         private void StartHomeState()
         {
-            _gameState.StateSetTo(new StateHome(this,_content,_spriteBatch, _audio));
+            _gameState.StateSetTo(new StateHome(this,_content,_spriteBatch, _audio, _adminDebug,_font));
         }
-        private void StartPlayState(GamePlay Level)
+        private void StartPlayState(GamePlayLevel Level)
         {
-            _gameState.StateSetTo(new StatePlay(this,Level,_content, _spriteBatch, _audio));
+            _gameState.StateSetTo(new StatePlay(this,Level, _window, _content, _spriteBatch, _graphics, _audio, _adminDebug,_font));
         }
     }
 }

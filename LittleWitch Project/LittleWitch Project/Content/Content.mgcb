@@ -23,8 +23,50 @@
 #begin data/dataAudio/voiceMC_index.json
 /copy:data/dataAudio/voiceMC_index.json;data/dataAudio/voiceMC_index
 
+#begin data/dataEnemy/enemy_tutorial_animation.json
+/copy:data/dataEnemy/enemy_tutorial_animation.json
+
 #begin data/dataPlayer/player_animation.json
 /copy:data/dataPlayer/player_animation.json;data/dataPlayer/player_animation
+
+#begin font/fontGenshin_0.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:font/fontGenshin_0.png
+
+#begin font/fontGenshin_1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:font/fontGenshin_1.png
+
+#begin font/fontGenshin.fnt
+/importer:BitmapFontImporter
+/processor:BitmapFontProcessor
+/processorParam:Version=6.1.1.0
+/build:font/fontGenshin.fnt
+
+#begin level/tile/level_tutorial.tmx
+/importer:TiledTilemapImporter
+/processor:TilemapProcessor
+/processorParam:LevelName=
+/processorParam:Version=6.1.1.0
+/build:level/tile/level_tutorial.tmx
 
 #begin music/STATEplay/bgmTutorial.mp3
 /importer:Mp3Importer
@@ -72,6 +114,19 @@
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.1
 /build:texture/STATEhome/logo.jpg;texture/STATEhome/logo
+
+#begin texture/STATEplay/sprite_enemy_tutorial.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.1
+/build:texture/STATEplay/sprite_enemy_tutorial.png
 
 #begin texture/STATEplay/sprite_player.png
 /importer:TextureImporter
